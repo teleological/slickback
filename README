@@ -28,31 +28,14 @@ The collection can also be used with a Slick.Controls.Pager:
 
 The pager subscribes to "onPagingInfoChanged" notifications, which the
 collection will publish when it receives new pagination parameters from 
-a fetch. It is also possible to subscribe to the "onRowCountChanged" and 
-"onRowsChanged" notifications which can be used to update the grid with
-the state of the collection:
-
-  products.onRowCountChanged.subscribe(function() {
-    grid.updateRowCount();
-    grid.render();
-  });
-
-  products.onRowsChanged.subscribe(function() {
-    grid.removeAllRows();
-    grid.render();
-  });
+a fetch. The pager uses the "setPagingOptions" method to update the 
+collection with new pagination parameters, refreshing the collection's
+contents.
 
 Slickback assumes pagination parameters (both those passed to the
 collection data source and those received from the data source)
 follow a naming convention similar to that used by Ruby's WillPaginate
-library. The page number and size are passed to the collection's
-fetch method as "page" and "per_page". A standard Backbone collection
-will apply these parameters to the query string used to fetch the
-collection. The response is expected to be an object (rather than an
-array) including the following parameters: "entries" (the list of models),
-"currentPage", "perPage", and "totalEntries". Sample code for serializing
-WillPaginate collections with these parameters is provided in the example
-directory. This code can be installed as a rails initializer.
+library.
 
 Slickback was developed with Backbone v0.5.3 and SlickGrid v1.4.3,
 and may or may not work with other versions of these libraries.
@@ -61,6 +44,10 @@ Compatibility patches are welcome.
 Slickback is hosted on github:
 
   http://github.com/teleological/slickback
+
+Detailed documentation can be found on the Slickback wiki:
+
+  https://github.com/teleological/slickback/wiki
 
 To report a bug or suggest a feature:
 
