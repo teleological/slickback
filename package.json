@@ -3,8 +3,8 @@
   "version"         : "0.1.0",
   "description"     : "Slickback brings Backbone and SlickGrid together",
   "keywords"        : ["backbone","slickgrid","paginate"],
-  "homepage"        : "http://teleological.github.com/slickback",
-  "bugs"            : "http://teleological.github.com/slickback/issues",
+  "homepage"        : "http://github.com/teleological/slickback/wiki",
+  "bugs"            : "http://github.com/teleological/slickback/issues",
   "author"          : "Riley Lynch <oss@teleological.net>",
   "licences"        : [
     {
@@ -14,7 +14,7 @@
   ],
   "repository"      : {
   "type"            : "git",
-  "url"             : "http://teleological.github.com/slickback.git"
+  "url"             : "http://github.com/teleological/slickback.git"
   },
   "dependencies"    : {
     "underscore"    : ">=1.1.7",
