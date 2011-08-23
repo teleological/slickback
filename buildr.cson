@@ -1,0 +1,35 @@
+{
+  log: false
+
+  srcPath: 'lib'
+  outPath: 'pkg'
+
+  checkScripts: true
+  jshintOptions: {
+    node: true
+    expr: true
+  }
+
+  scriptsOrder: [
+    'slickback.js'
+    'slickback/scope.js'
+    'slickback/scoped_model_mixin.js'
+    'slickback/collection_events_mixin.js'
+    'slickback/paginated_collection_mixin.js'
+    'slickback/pager_adaptor_mixin.js'
+    'slickback/event_translation_mixin.js'
+    'slickback/collection_adaptor_mixin.js'
+    'slickback/paginated_collection.js'
+    'slickback/backbone_model_formatter_factory.js'
+  ]
+
+  bundleScriptPath: 'pkg/slickback.min.js'
+
+  deleteBundledFiles: true # NOTE: leaves behind pkg/slickback directory
+
+  compressScripts: true
+
+  buildHandler: (err) ->
+    console.log "Howdy"
+
+}

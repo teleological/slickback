@@ -1,0 +1,33 @@
+{
+  "name"            : "slickback",
+  "version"         : "0.1.0",
+  "description"     : "Slickback brings Backbone and SlickGrid together",
+  "keywords"        : ["backbone","slickgrid","paginate"],
+  "homepage"        : "http://teleological.github.com/slickback",
+  "bugs"            : "http://teleological.github.com/slickback/issues",
+  "author"          : "Riley Lynch <oss@teleological.net>",
+  "licences"        : [
+    {
+      "type"        : "MIT",
+      "url"         : "http://creativecommons.org/licenses/MIT"
+    }
+  ],
+  "repository"      : {
+  "type"            : "git",
+  "url"             : "http://teleological.github.com/slickback.git"
+  },
+  "dependencies"    : {
+    "underscore"    : ">=1.1.7",
+    "backbone"      : ">=0.5.3"
+  },
+  "devDependencies" : {
+    "jasmine-node"  : ">=1.0.6",
+    "buildr"        : ">=0.5.3"
+  },
+  "lib"             : "lib",
+  "main"            : "pkg/slickback.min.js",
+  "scripts"         : {
+  "prepublish"      : "buildr && rmdir pkg/slickback",
+  "test"            : "jasmine-node test"
+  }
+}

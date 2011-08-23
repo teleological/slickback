@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Slickback example</title>
+    <link rel="stylesheet" href="../vendor/slickgrid-1.4.3/css/slick.grid.css"/>
+    <link rel="stylesheet" href="../vendor/slickgrid-1.4.3/css/slick.pager.css"/>
+    <link rel="stylesheet" href="../vendor/jquery-ui-1.8.14/css/smoothness/jquery-ui-1.8.14.custom.css"/>
+
+    <link rel="stylesheet" href="example.css"/>
+  </head>
+
+  <body>
+    <div id="exampleGrid"></div>
+    <div id="examplePager"></div>
+
+    <script src="../vendor/jquery-1.6.2.js"></script>
+    <script src="../vendor/underscore-1.1.7/underscore.js"></script>
+    <!-- NOTE: jquery and underscore must precede backbone -->
+    <script src="../vendor/backbone-0.5.3/backbone.js"></script>
+    <script src="../vendor/jquery-ui-1.8.14/jquery-ui-1.8.14.custom.min.js"></script>
+    <script src="../vendor/jquery.event.drag-2.0.js"></script>
+    <script src="../vendor/slickgrid-1.4.3/slick.grid.js"></script>
+    <script src="../vendor/slickgrid-1.4.3/slick.pager.js"></script>
+
+    <script src="../pkg/slickback.min.js"></script>
+
+    <script src="model.js"></script>
+    <script src="view.js"></script>
+
+    <script>
+      $(function() {
+        var products = new Example.Collections.Products();
+        var view     = new Example.Views.ProductsGrid({
+          el:         '#exampleGrid',
+          collection: products,
+          pager:      $('#examplePager')
+        });
+      });
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title>Jasmine Test Runner</title>
+
+  <link rel="stylesheet" type="text/css" href="../vendor/jasmine-1.0.2/jasmine.css">
+
+  <!-- Jasmine -->
+  <script type="text/javascript" src="../vendor/jasmine-1.0.2/jasmine.js"></script>
+  <script type="text/javascript" src="../vendor/jasmine-1.0.2/jasmine-html.js"></script>
+
+  <!-- Dependencies -->
+  <script type="text/javascript" src="../vendor/underscore-1.1.7/underscore.js"></script>
+  <script type="text/javascript" src="../vendor/backbone-0.5.3/backbone.js"></script>
+
+  <!-- Libraries -->
+  <script type="text/javascript" src="../pkg/slickback.min.js"></script>
+
+  <!-- Specs -->
+  <script type="text/javascript" src="scope_spec.js"></script>
+  <script type="text/javascript" src="scoped_model_mixin_spec.js"></script>
+  <script type="text/javascript" src="collection_events_mixin_spec.js"></script>
+  <script type="text/javascript" src="paginated_collection_mixin_spec.js"></script>
+  <script type="text/javascript" src="pager_adaptor_mixin_spec.js"></script>
+  <script type="text/javascript" src="event_translation_mixin_spec.js"></script>
+  <script type="text/javascript" src="collection_adaptor_mixin_spec.js"></script>
+  <script type="text/javascript" src="paginated_collection_spec.js"></script>
+  <script type="text/javascript" src="backbone_model_formatter_factory_spec.js"></script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+    jasmine.getEnv().execute();
+  </script>
+</body>
+
+</html>

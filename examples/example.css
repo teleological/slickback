@@ -1,0 +1,20 @@
+
+body > div {
+  width: 330px;
+}
+
+#exampleFilter {
+  text-align: right;
+}
+
+#exampleGrid {
+  height: 155px;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.slick-pager .slick-pager-settings {
+  display: none;
+}
