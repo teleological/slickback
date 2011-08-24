@@ -1,57 +1,25 @@
 Slickback integrates Backbone and SlickGrid, extending Backbone 
 collections to support pagination and filtering ("scoping"), and
-adapting them to serve as SlickGrid "DataView" objects.
+adapting them to serve as SlickGrid "DataView" objects. Detailed 
+documentation can be found on the Slickback wiki:
 
-The easiest way to use Slickback is to extend Slickback.PaginatedCollection 
-rather than Backbone.Collection, e.g.:
+  http://github.com/teleological/slickback/wiki
 
-  var productsCollection = Slickback.PaginatedCollection.extend({
-    model: Product,
-    url:   '/products'
-  });
+A simple example can be found here:
 
-An instance of the collection can be passed to Slick.Grid's constructor:
+  http://teleological.github.com/slickback/
 
-  var products = new productsCollection();
-  var gridOptions = {
-    formatterFactory: Slickback.BackboneModelFormatterFactory
-  };
-  var grid = new Slick.Grid('#grid',products,productColumns,gridOptions);
-
-BackboneModelFormatterFactory makes the grid use Backbone.Model's "get"
-method to retrieve field values, which otherwise would be treated as
-model object attributes.
-
-The collection can also be used with a Slick.Controls.Pager:
-
-  var pager = new Slick.Controls.Pager(products,grid,$('#pager'));
-
-The pager subscribes to "onPagingInfoChanged" notifications, which the
-collection will publish when it receives new pagination parameters from 
-a fetch. The pager uses the "setPagingOptions" method to update the 
-collection with new pagination parameters, refreshing the collection's
-contents.
-
-Slickback assumes pagination parameters (both those passed to the
-collection data source and those received from the data source)
-follow a naming convention similar to that used by Ruby's WillPaginate
-library.
-
-Slickback was developed with Backbone v0.5.3 and SlickGrid v1.4.3,
-and may or may not work with other versions of these libraries.
-Compatibility patches are welcome.
-
-Slickback is hosted on github:
+The Slickback source code is hosted on github:
 
   http://github.com/teleological/slickback
-
-Detailed documentation can be found on the Slickback wiki:
-
-  https://github.com/teleological/slickback/wiki
 
 To report a bug or suggest a feature:
 
   http://github.com/teleological/slickback/issues
+
+Slickback was developed with Backbone v0.5.3 and SlickGrid v1.4.3,
+and may or may not work with other versions of these libraries.
+Compatibility patches are welcome.
 
 Thanks to Jeremy Ashkenas and Michael Leibman for Backbone and SlickGrid,
 and to Pivotal Labs and Benjamin Arthur Lupton for the Jasmine and
