@@ -5,7 +5,7 @@
 
     var collection;
     beforeEach(function() {
-      collection = { getPagingInfo: function() { return { foo: "bar" } } };
+      collection = {};
       _.extend(collection,
                Backbone.Events,
                Slickback.CollectionEventsMixin,
@@ -30,11 +30,6 @@
       var backboneEvents = ["reset","add","remove"];
       _.each(backboneEvents, function(eventName) {
         describe("Backbone trigger " + eventName, function() {
-          it("publishes onPagingInfoChanged with paging info", function() {
-            collection.trigger(eventName);
-            expect(collection.onPagingInfoChanged.notify).
-              toHaveBeenCalledWith({ foo: "bar" });
-          });
 
           it("publishes onRowCountChanged", function() {
             collection.trigger(eventName);
@@ -47,8 +42,28 @@
             expect(collection.onRowsChanged.notify).
               toHaveBeenCalled();
           });
+
+          describe("when #getPagingInfo is not defined", function() {
+            it("does not publish onPagingInfoChanged", function() {
+              collection.trigger(eventName);
+              expect(collection.onPagingInfoChanged.notify).
+                wasNotCalled();
+            });
+          });
+
+          describe("when #getPagingInfo is defined", function() {
+            it("publishes onPagingInfoChanged with paging info",function() {
+              collection.getPagingInfo = function() { return {foo: "bar"};};
+
+              collection.trigger(eventName);
+              expect(collection.onPagingInfoChanged.notify).
+                toHaveBeenCalledWith({ foo: "bar" });
+            });
+          });
+
         });
       });
+
 
     });
 
