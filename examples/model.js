@@ -1,19 +1,21 @@
 (function() {
   "use strict";
 
-  var productModel = Backbone.Model.extend({});
+  function simulateSync(method,model,options) {
+    switch(method) {
+      case 'read':
+        return simulatePaginatedRead(model,options);
+        break;
+      case 'update':
+        return simulatePaginatedUpdate(model,options);
+        break;
+      default:
+        throw "Method " + method + "not implemented";
+        break;
+    }
+  }
 
-  function simulatedPaginatedSource(method,model,options) {
-    var models = [];
-    _.times(57,function(i) {
-      var model = { 
-        id:    (100 + i),
-        name:  ("Product " + (1 + i)),
-        price: ((Math.floor(Math.random()*101)) + 0.99)
-      };
-      models.push(model);
-    });
-
+  function simulatePaginatedRead(model,options) {
     var dataParams = options.data || {};
 
     var page       = dataParams['page']     || 1;
@@ -38,6 +40,27 @@
     options.success(data);
   }
 
+  function simulatePaginatedUpdate(model,options) {
+    var offset = (model.id || 0) - 100;
+    if (offset >= 0) { models[offset] = model.attributes; }
+    options.success();
+  }
+
+  var productModel = Backbone.Model.extend({
+    sync: simulateSync
+  });
+
+  var models = [];
+  _.times(57,function(i) {
+    var model = { 
+      id:    (100 + i),
+      name:  ("Product " + (1 + i)),
+      condition: (Math.floor(Math.random() * 4) + 1),
+      price: ((Math.floor(Math.random()*1001) * 10) + 0.50)
+    };
+    models.push(model);
+  });
+
   /**
    * To use a real data source, don't implement sync and
    * provide the collection with a url which understands 
@@ -46,7 +69,7 @@
    */
   var productsCollection = Slickback.PaginatedCollection.extend({
     model: productModel,
-    sync:  simulatedPaginatedSource
+    sync:  simulateSync
   });
 
   this.Example || (this.Example = {});

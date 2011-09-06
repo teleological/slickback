@@ -2,7 +2,7 @@
   log: false
 
   srcPath: 'lib'
-  outPath: 'pkg'
+  outPath: 'dist'
 
   checkScripts: true
   jshintOptions: {
@@ -19,17 +19,22 @@
     'slickback/pager_adaptor_mixin.js'
     'slickback/event_translation_mixin.js'
     'slickback/collection_adaptor_mixin.js'
+    'slickback/collection.js'
+    'slickback/scoped_collection.js'
     'slickback/paginated_collection.js'
+    'slickback/number_formatter.js'
+    'slickback/choice_formatter.js'
+    'slickback/editor_mixin.js'
+    'slickback/text_cell_editor.js'
+    'slickback/integer_cell_editor.js'
+    'slickback/number_cell_editor.js'
+    'slickback/dropdown_cell_editor.js'
     'slickback/backbone_model_formatter_factory.js'
   ]
 
-  bundleScriptPath: 'pkg/slickback.min.js'
+  bundleScriptPath: 'dist/slickback.min.js'
 
-  deleteBundledFiles: true # NOTE: leaves behind pkg/slickback directory
+  deleteBundledFiles: true # NOTE: leaves behind dist/slickback directory
 
   compressScripts: true
-
-  buildHandler: (err) ->
-    console.log "Howdy"
-
 }

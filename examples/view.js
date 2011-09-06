@@ -3,23 +3,47 @@
 
   var productColumns = [
     {
-      id:    'product_id',
-      name:  'Product #',
-      field: 'id',
-      width: 100
-    },
-    {
-      id:    'product_name',
-      name:  'Name',
-      field: 'name',
-      width: 150
-    },
-    {
-      id:      'product_price',
-      name:    'Price',
-      field:   'price',
+      id:       'product_id',
+      name:     'Product #',
+      field:    'id',
       sortable: true,
-      cssClass: 'alignRight'
+      width:    120
+    },
+    {
+      id:       'product_name',
+      name:     'Name',
+      field:    'name',
+      width:    150,
+      editable: true,
+      editor:   Slickback.TextCellEditor
+    },
+    {
+      id:        'product_condition',
+      name:      'Condition',
+      field:     'condition',
+      editable:  true,
+      choices: [
+        { label: 'Excellent', value: 4 },
+        { label: 'Good',      value: 3 },
+        { label: 'Fine',      value: 2 },
+        { label: 'Poor',      value: 1 },
+      ],
+      formatter: Slickback.ChoiceFormatter,
+      editor:    Slickback.DropdownCellEditor,
+      width:     150
+    },
+    {
+      id:       'product_price',
+      name:     'Price',
+      field:    'price',
+      sortable:  true,
+      width:     120,
+      cssClass:  'alignRight',
+      formatter: Slickback.NumberFormatter,
+      precision: 2,
+      separated: true,
+      editable:  true,
+      editor:    Slickback.NumberCellEditor,
     }
   ];
 
@@ -27,6 +51,7 @@
     this.pager  = initializationOpts.pager;
 
     var gridOptions = _.extend({},{
+      editable:         true,
       formatterFactory: Slickback.BackboneModelFormatterFactory
     },initializationOpts.grid);
 
@@ -45,6 +70,10 @@
       collection.fetchWithScope(); // NOTE: resetting pagination
     };
 
+    collection.bind('change',function(model,attributes) {
+      model.save();
+    });
+
     collection.onRowCountChanged.subscribe(function() {
       grid.updateRowCount();
       grid.render();
@@ -61,7 +90,6 @@
   var productsGridView = Backbone.View.extend({
     initialize: initializeProductsGridView
   });
-
 
   this.Example || (this.Example = {});
   this.Example.Views = { ProductsGrid: productsGridView   };
