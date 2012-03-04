@@ -19,8 +19,8 @@ To report a bug or suggest a feature:
 
 Slickback was developed with Backbone v0.9.1 and SlickGrid v2.0
 (commit 57c0a44) and may or may not work with other versions of these
-libraries. Slickback v0.2.0 will work with versions of Backbone as old 
-as v0.5.3, but for older versions of SlickGrid (esp v1.4.3), use an
+libraries. Slickback v0.3.0 will work with versions of Backbone as old
+as v0.5.3, but for older versions of SlickGrid (esp. v1.4.3), use an
 older version of Slickback such as v0.2.1. Compatibility patches are
 welcome.
 
