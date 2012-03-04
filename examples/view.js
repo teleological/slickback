@@ -62,13 +62,13 @@
     var pager =
       new Slick.Controls.Pager(collection,grid,this.pager);
 
-    grid.onSort = function(column, isAscending) {
+    grid.onSort.subscribe(function(e, msg) {
       collection.extendScope({
-        order:     column.field,
-        direction: (isAscending ? 'ASC' : 'DESC')
+        order:     msg.sortCol.field,
+        direction: (msg.sortAsc ? 'ASC' : 'DESC')
       });
       collection.fetchWithScope(); // NOTE: resetting pagination
-    };
+    });
 
     collection.bind('change',function(model,attributes) {
       model.save();
@@ -80,7 +80,7 @@
     });
 
     collection.onRowsChanged.subscribe(function() {
-      grid.removeAllRows();
+      grid.invalidateAllRows();
       grid.render();
     });
 

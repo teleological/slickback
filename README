@@ -17,9 +17,12 @@ To report a bug or suggest a feature:
 
   http://github.com/teleological/slickback/issues
 
-Slickback was developed with Backbone v0.5.3 and SlickGrid v1.4.3,
-and may or may not work with other versions of these libraries.
-Compatibility patches are welcome.
+Slickback was developed with Backbone v0.9.1 and SlickGrid v2.0
+(commit 57c0a44) and may or may not work with other versions of these
+libraries. Slickback v0.2.0 will work with versions of Backbone as old 
+as v0.5.3, but for older versions of SlickGrid (esp v1.4.3), use an
+older version of Slickback such as v0.2.1. Compatibility patches are
+welcome.
 
 Thanks to Jeremy Ashkenas and Michael Leibman for Backbone and SlickGrid,
 and to Pivotal Labs and Benjamin Arthur Lupton for the Jasmine and

@@ -28,7 +28,9 @@
 
               var msg = { foo: "bar" };
               collection[eventName].notify(msg)
-              expect(subscriber).toHaveBeenCalledWith(msg);
+              expect(subscriber).toHaveBeenCalledWith(
+                jasmine.any(Slick.EventData),
+                msg);
             });
           });
 

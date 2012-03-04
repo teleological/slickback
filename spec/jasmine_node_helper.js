@@ -5,11 +5,14 @@
       jsdomDocument = jsdom.jsdom('<html><body></body></html>');
   global.window   = jsdomDocument.createWindow();
 
-  require('../vendor/jquery-1.6.2');
+  require('../vendor/jquery-1.7.1');
   require('./spy_on_jquery.js');
 
-  global._        = require('../vendor/underscore-1.1.7/underscore');
-  global.Backbone = require('../vendor/backbone-0.5.3/backbone');
+  global._        = require('../vendor/underscore-1.3.1/underscore');
+  global.Backbone = require('../vendor/backbone-0.9.1/backbone');
+
+  // Slickback depends on Slick.Event (and Slick.EventData)
+  global.Slick = require('./slick.core.events');
 
   global.Slickback = require('../lib/slickback');
 
