@@ -6,8 +6,9 @@
 
   checkScripts: true
   jshintOptions: {
-    node: true
-    expr: true
+    devel: true
+    node:  true
+    expr:  true
   }
 
   scriptsOrder: [
