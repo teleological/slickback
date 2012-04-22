@@ -1,8 +1,9 @@
 {
+
   log: false
 
   srcPath: 'lib'
-  outPath: 'dist'
+  outPath: 'build'
 
   checkScripts: true
   jshintOptions: {
@@ -35,7 +36,21 @@
 
   bundleScriptPath: 'dist/slickback.min.js'
 
-  deleteBundledFiles: true # NOTE: leaves behind dist/slickback directory
+  deleteBundledFiles: true
 
   compressScripts: true
+
+  buildHandler: (err) ->
+    throw err if err
+    @log 'info', "Building uncompressed version"
+    @config.compressScripts = false
+    @config.bundleScriptPath = 'dist/slickback.full.js'
+    @config.buildHandler = (err) ->
+      throw err if err
+      @log 'info', "Cleaning build directories"
+      fs = require 'fs'
+      fs.rmdir 'build/slickback'
+      fs.rmdir 'build'
+    new @constructor(@config).process()
+
 }
