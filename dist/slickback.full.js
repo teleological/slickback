@@ -529,6 +529,13 @@
   var getItem = function(i) {
     return this.models[i];
   };
+  
+  var getItemMetadata : function(row) {
+      var model = this.models[row];
+      if (model.getItemMetadata) {
+          return model.getItemMetadata();
+      }
+  };
 
   /**
    * Adapts a collection that stores its models in a model array
@@ -536,7 +543,8 @@
    */
   exportNamespace.CollectionAdaptorMixin = {
     getLength: getLength,
-    getItem:   getItem
+    getItem:   getItem,
+    getItemMetadata: getItemMetadata
   };
 
 }).call(this);
