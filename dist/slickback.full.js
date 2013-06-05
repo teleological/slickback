@@ -445,7 +445,7 @@
     }
     // NOTE: this notification will happen again on reset
     this.onPagingInfoChanged.notify(this.getPagingInfo());
-    this.fetchWithPagination();
+    this.fetchWithPagination({reset: true});
   };
 
   /**
